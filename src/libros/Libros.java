@@ -56,8 +56,20 @@ public class Libros {
         String nombre = "src\\libros\\libros1.xml";
         try (BufferedWriter fichero1 = new BufferedWriter(new FileWriter(nombre))) {
 
-            fichero1.write(texto + "\r\n");
-
+            fichero1.write("<Libros>");
+            fichero1.newLine();
+            fichero1.write("<Libro>");
+            fichero1.newLine();
+            fichero1.write("<Titulo>");
+            fichero1.newLine();
+            fichero1.write("El Capote");
+            fichero1.newLine();
+            fichero1.write("<Titulo>");
+            fichero1.newLine();
+            fichero1.write("<Libro>");
+            fichero1.newLine();
+            fichero1.write("<Libros>");
+            
             fichero1.close();
         } catch (IOException ex) {
             System.out.println("error al acceder al fichero");
@@ -67,10 +79,10 @@ public class Libros {
     public int LeerFicheroTextoBufferedReader() {
         try {
             BufferedReader fr1 = new BufferedReader(new FileReader("src\\libros\\libros1.xml"));
-            int valor = fr1.read();
-            while (valor != -1) {
-                System.out.print((char) valor);
-                valor = fr1.read();
+            String valor = fr1.readLine();
+            while (valor != null) {
+                System.out.println(valor);
+                valor = fr1.readLine();
             }
         } catch (IOException ex) {
             System.out.println("Error al leer el fichero");
